@@ -129,10 +129,10 @@
 
                 //当前的工具
                 currentTool = global.painter.tool.currentToolContainer.getTool();
-
-            //绑定鼠标画布图层鼠标移动事件
-            $document.delegate('#canvas-mouse', 'mousemove', function(e){
-                var
+                
+                //绑定鼠标画布图层鼠标移动事件
+                $document.delegate('#canvas-mouse', 'mousemove', function(e){
+                    var
                     point = null,
                     pointList = null,
                     index = "",
@@ -144,12 +144,12 @@
                     mouseOption = null,
                     mouseShape = null,
                     className = currentTool.getClassName();
-
-                //判断工具是否为图形类
-                if(className === "shape"){
-                    point = {
-                        x:e.pageX - offsetLeft,
-                        y:e.pageY - offsetTop
+                    
+                    //判断工具是否为图形类
+                    if(className === "shape"){
+                        point = {
+                            x:e.pageX - offsetLeft,
+                            y:e.pageY - offsetTop
                     };
                     mouse = currentTool.getMouse();//获取鼠标名称
                     mouseOption = currentTool.getOption();//获取参数
@@ -172,6 +172,7 @@
                         shape.init(option);
                         bufferCanvas.clear();
                         bufferCanvas.paint(shape);
+                        console.log(option,shape)
                     }
                 } else if (className === "Text") {
                     mouse = currentTool.getMouse();//获取鼠标名称
@@ -272,7 +273,7 @@
                 currentTool = global.painter.tool.currentToolContainer.getTool();
             });
 
-            //绑定鼠标画布图层鼠标移动事件
+            //绑定手指移动
             document.getElementById('canvas-mouse').addEventListener('touchmove', function(e){
                 var
                     point = null,
@@ -311,7 +312,7 @@
                         pointList = that.getPointList();
                         pointList.add(point);
                         option = currentTool.setPoint(pointList);
-
+                        
                         shape = new global.painter.model.shapeModel[index]();
                         shape.init(option);
                         bufferCanvas.clear();
@@ -320,7 +321,7 @@
                 }
             }, false);
 
-            //绑定鼠标按下事件
+            //绑定手指按下事件
             document.getElementById('canvas-mouse').addEventListener('touchstart', function(e){
                 var
                     touch = e.touches[0],
@@ -337,9 +338,10 @@
                 that.getPointList().init();//初始化坐标列表
                 that.getPointList().add(point);//添加鼠标坐标
                 that.setClickStatus(true);
+                currentTool = global.painter.tool.currentToolContainer.getTool();
             }, false);
 
-            //绑定鼠标弹起事件
+            //绑定手指拿开事件
             document.getElementById('canvas-mouse').addEventListener('touchend', function(e){
                 var
                     touch = e.changedTouches[0],

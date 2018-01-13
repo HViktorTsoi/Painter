@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="zh-CN" manifest="index.manifest">
+<!-- <html lang="zh-CN" manifest="index.manifest"> -->
+<html lang="zh-CN">
 	<head>
 		<meta charset="utf-8" />
 
 		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
 		Remove this if you use the .htaccess -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+		<meta http-equiv="cache-control" content="no-cache">
 
 		<title>Painter</title>
 		<meta name="description" content="绘图  html5 canvas" />
@@ -193,7 +196,7 @@
 					<button class="stroke" title="轮廓工具" data-current-tool="Pen" data-tool-panel="stroke"></button>
 					<button class="eraser" title="橡皮擦工具" data-current-tool="Eraser" data-tool-panel="eraser"></button>
 					<button class="flood-fill" title="填充工具" data-current-tool="FloodFill" data-tool-panel="flood-fill"></button>
-					<button class="eye-dropper" title="吸管工具" data-current-tool="EyeDropper" data-tool-panel="eye-dropper"></button>
+					<button class="eye-d	ropper" title="吸管工具" data-current-tool="EyeDropper" data-tool-panel="eye-dropper"></button>
 					<button class="text" title="文字工具" data-tool-panel="text" data-current-tool="Text"></button>
 					<input class="color" type="text" title="颜色" value="rgba(0,0,0,1)"/>
 				</div><!-- end .tool -->
