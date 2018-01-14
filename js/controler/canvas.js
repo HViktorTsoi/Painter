@@ -172,7 +172,6 @@
                         shape.init(option);
                         bufferCanvas.clear();
                         bufferCanvas.paint(shape);
-                        console.log(option,shape)
                     }
                 } else if (className === "Text") {
                     mouse = currentTool.getMouse();//获取鼠标名称

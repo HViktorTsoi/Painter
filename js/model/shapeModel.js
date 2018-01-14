@@ -254,30 +254,36 @@
          */
         this.paint = function(context){
             var
-               option = this.getOption(),
-               list = option.list,
-               start = list[0],
-               len = list.length,
-               i = 0;
-
-            context.save();//保存上下文信息
-
-            //设置属性
-            this.setAttributes(context);
-
-            //绘制
-            context.beginPath();
-
-            context.moveTo(start.x, start.y);
-            for(i; i<len; i=i+1){
-               context.lineTo(list[i].x, list[i].y);
-            }
-            context.closePath();
-            context.fill();
-            context.stroke();
-            context.restore();//回复上下文
+            option = this.getOption(),
+            list = option.list,
+            start = list[0],
+            len = list.length,
+            i = 0;
+            option.strokeStyle=option.fillStyle
+            console.log(option.strokeStyle)
+               context.save();//保存上下文信息
+               
+               //设置属性
+               this.setAttributes(context);
+               
+               //绘制
+               context.beginPath();
+               
+               context.moveTo(start.x, start.y);
+               for(i; i<len; i=i+1){
+                   context.lineTo(list[i].x, list[i].y);
+                }
+                context.closePath();
+                // 清除上次编辑
+                context.clip()
+                var cvs=global.painter.canvas.negativeCanvasContainer.getCanvas()
+                context.clearRect(0,0,cvs.width,cvs.height)
+                // 绘制本次编辑
+                context.fill();
+                context.stroke();
+                context.restore();//回复上下文
+            };
         };
-    };
 
     /**
      * 闭合曲线对象原型
@@ -780,7 +786,12 @@
             for(i; i<len; i=i+1){
                context.lineTo(list[i].x, list[i].y);
             }
-            context.stroke();
+
+            context.closePath()
+            context.clip()
+            var cvs=global.painter.canvas.negativeCanvasContainer.getCanvas()
+            context.clearRect(0,0,cvs.width,cvs.height)
+            // context.stroke();
             context.restore();//回复上下文
         };
     };

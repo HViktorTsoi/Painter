@@ -152,7 +152,10 @@
                     x = $("#negative-modal-x", $negativeModal).val(),
                     y = $("#negative-modal-y", $negativeModal).val(),
                     width = $("#negative-modal-width", $negativeModal).val(),
-                    height = $("#negative-modal-height", $negativeModal).val();                 
+                    height = $("#negative-modal-height", $negativeModal).val();   
+                    
+                    $('canvas').attr('width',width)
+                    $('canvas').attr('height',height)
                  
                  image.init({
                      x:x,
@@ -205,8 +208,8 @@
                     x = $("#image-modal-x", $imageModal).val(),
                     y = $("#image-modal-y", $imageModal).val(),
                     width = $("#image-modal-width", $imageModal).val(),
-                    height = $("#image-modal-height", $imageModal).val();                 
-                 
+                    height = $("#image-modal-height", $imageModal).val();
+
                  image.init({
                      x:x,
                      y:y,
